@@ -11,15 +11,11 @@ const getSomeThing = () => {
 
 }
 
-const system = () => {
+const system = async () => {
     console.log('init')
-    const prom = getSomeThing();
-    prom.then(some => {
-        console.log(`something é: ${some}`)
-        console.log('end')
-    })
-
-
+    const some = await getSomeThing();
+    console.log(`something é: ${some}`)
+    console.log('end')
 }
 
 system();
