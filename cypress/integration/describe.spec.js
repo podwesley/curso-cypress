@@ -12,7 +12,7 @@ describe('agrupar testes' , () => {
         })
     })
 
-    it('teste 1', () => {
+    it.only('teste 1', () => {
 
     })
 
