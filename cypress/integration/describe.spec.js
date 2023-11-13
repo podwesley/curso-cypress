@@ -6,6 +6,10 @@ describe('agrupar testes' , () => {
         it('teste 1 e', () => {
 
         })
+
+        it.skip('teste 2 e', () => {
+
+        })
     })
 
     it('teste 1', () => {
