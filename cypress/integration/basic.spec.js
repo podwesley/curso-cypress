@@ -2,11 +2,9 @@
 
 describe('Básico de cypress', () => {
 
-    it.only('visitar uma nova pagina e fazer uma validação do título', () => {
+    it('visitar uma nova pagina e fazer uma validação do título', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
-
-        cy.pause()
 
         cy.title()
             .should('be.equal', 'Campo de Treinamento')
@@ -15,8 +13,6 @@ describe('Básico de cypress', () => {
         //imprimir o log no console, e escrever o log em um campo de texto. 
 
     })
-
-
 
     it('deve procurar o botao e interagir com o elemento', () => {
 
