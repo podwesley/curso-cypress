@@ -60,3 +60,16 @@ it('Objects Equality', () => {
     expect({}, 'Verifica se o objeto vazio é realmente vazio').to.be.empty;
 
 })
+
+it('Arrays', () => {
+
+    const arr = [1, 2, 3]
+
+
+    expect(arr, 'Espera que o array possua os seguintes membros').to.have.members([1, 2, 3])
+
+    expect(arr, 'Espera que esteja incluído no array os membros').to.include.members([1, 2])
+
+    expect(arr, 'Espera que o array não esteja vazio.').to.not.be.empty
+
+})
