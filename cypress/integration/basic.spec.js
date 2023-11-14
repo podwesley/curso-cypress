@@ -10,7 +10,7 @@ describe('Básico de cypress', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
-        //imprimir o log no console, e escrever o log em um campo de texto. 
+        //TODO - imprimir o log no console, e escrever o log em um campo de texto. 
 
     })
 

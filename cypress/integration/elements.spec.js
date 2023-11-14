@@ -89,17 +89,29 @@ describe('Elementos básico', () => {
 
     })
 
-    it.only('combos', () => {
+    it('combos', () => {
 
         // selecionando por texto
         cy.get('[data-test=dataEscolaridade]')
-            .select('2o grau completo') 
+            .select('2o grau completo')
             .should('have.value', '2graucomp')
 
-        // selecionando por valeu    
+        // selecionando por value    
         cy.get('[data-test=dataEscolaridade]')
-        .select('1graucomp') 
-        .should('have.value', '1graucomp')
+            .select('1graucomp')
+            .should('have.value', '1graucomp')
+
+        //TODO - validar opções do combo. 
+    })
+
+    it.only('combos multiplos', () => {
+
+        // é o mesmo de cima porém mandamos os valores dentro de um array nessa situação 
+        // de combo multiplo quando mandamos um array temos que mandar os values e não os textos
+        cy.get('[data-testid=dataEsportes]')
+            .select(['natacao', 'futebol'])
+            
+        //TODO - validar opções selecionadas do combo multiplo.  
     })
 
 })
