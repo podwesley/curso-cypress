@@ -73,3 +73,15 @@ it('Arrays', () => {
     expect(arr, 'Espera que o array não esteja vazio.').to.not.be.empty
 
 })
+
+it('Types', () => {
+
+    const num = 1
+    const str = 'String'
+
+    expect(num, 'checando se um tipo é um número').to.be.a('number')
+    expect(str, 'checando se um tipo é uma string').to.be.a('string')
+    expect({}, 'checando se um tipo é um objeto').to.be.an('object')
+    expect([], 'checando se um tipo é um array').to.be.an('array')
+
+})
