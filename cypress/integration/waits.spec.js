@@ -14,9 +14,18 @@ describe('Waits ...', () => {
     it('1 - Deve aguardar elemento disponível', () => {
 
         cy.get('#novoCampo').should('not.exist')
-        .get('#buttonDelay')
-        .click()
-        .get('#novoCampo').type('funciona')
+            .get('#buttonDelay')
+            .click()
+            .get('#novoCampo').type('funciona')
+
+    })
+
+    it.only('Retrys', () => {
+
+        cy.get('#buttonDelay')
+            .click()
+            .get('#novoCampo')
+            .should('exist')
 
     })
 })

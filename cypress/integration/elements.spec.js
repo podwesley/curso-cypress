@@ -104,7 +104,7 @@ describe('Elementos básico', () => {
         //TODO - validar opções do combo. 
     })
 
-    it.only('combos multiplos', () => {
+    it('combos multiplos', () => {
 
         // é o mesmo de cima porém mandamos os valores dentro de um array nessa situação 
         // de combo multiplo quando mandamos um array temos que mandar os values e não os textos
