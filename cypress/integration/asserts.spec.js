@@ -85,3 +85,18 @@ it('Types', () => {
     expect([], 'checando se um tipo é um array').to.be.an('array')
 
 })
+
+it('Strings', () => {
+
+    const str = 'String de teste'
+
+    expect(str, 'checando se uma string é igual a outra.').to.be.equal('String de teste')
+    expect(str, 'checando o tamanho de uma string').to.be.length(15)
+    expect(str, 'checando o a string contem').to.contains('de teste')
+    expect(str, 'comeca com a palavra string').to.match(/^String/)
+    expect(str, 'termina com a palavra teste').to.match(/teste$/)
+    expect(str, 'checa o tamanho da string usando regex').to.match(/.{15}/)
+    expect(str, 'só contem letras').to.match(/\w+/)
+    expect(str, 'não contém números').to.match(/\D+/)
+
+})
