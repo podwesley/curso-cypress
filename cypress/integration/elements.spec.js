@@ -37,7 +37,7 @@ describe('Elementos básico', () => {
 
     })
 
-    it.only('textarea', () => {
+    it('textarea', () => {
 
         cy.get('#elementosForm\\:sugestoes')
             .type('adfgasdfkvjakfvkasdfj')
@@ -57,4 +57,21 @@ describe('Elementos básico', () => {
             .should('have.value', 'cypress test') // valida se no campo do texto foi escrito a parada. 
 
     })
+
+    it.only('radio button ', () => {
+
+        cy.get('#formSexoFem')
+            .click()
+            .should('be.checked') //verificar se um botao esta checado.
+            .get('#formSexoMas')
+            .should('not.be.checked') //verificar se um botao não esta checado.
+
+        // pegando todos os checks e verificando qual esta checado.
+
+        cy.get("[name=formSexo]")
+            .should('have.length', 2);
+
+
+    })
+
 })
