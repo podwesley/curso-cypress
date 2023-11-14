@@ -2,26 +2,27 @@
 
 describe('Básico de cypress', () => {
 
-    it('visitar uma nova pagina e fazer uma validação do título', () => {
+    it.only('visitar uma nova pagina e fazer uma validação do título', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
         cy.title()
-            .should('be.equal', 'Campo de Treinamento')
+            .should('be.equal', 'Campo de Treinamento').debug()
             .and('contain', 'Campo')
 
         //imprimir o log no console, e escrever o log em um campo de texto. 
 
     })
 
-    it.only('deve procurar o botao e interagir com o elemento', () => {
+
+
+    it('deve procurar o botao e interagir com o elemento', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
         cy.get('#buttonSimple')
             .click()
             .should('have.value', 'Obrigado!')
-
     })
 
 })
