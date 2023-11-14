@@ -28,9 +28,17 @@ describe('Elementos básico', () => {
             .should('have.text', 'Status: Nao cadastrado')
     })
 
-    it.only('textField', () => {
+    it('textField', () => {
 
         cy.get('#formNome')
+            .type('cypress teste')
+            .should('have.value', 'cypress teste') // valida se no campo do texto foi escrito a parada. 
+
+    })
+
+    it('textarea', () => {
+
+        cy.get('#elementosForm\\:sugestoes')
             .type('cypress teste')
             .should('have.value', 'cypress teste') // valida se no campo do texto foi escrito a parada. 
 
