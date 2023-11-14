@@ -14,4 +14,14 @@ describe('Básico de cypress', () => {
 
     })
 
+    it.only('deve procurar o botao e interagir com o elemento', () => {
+
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+
+        cy.get('#buttonSimple')
+            .click()
+            .should('have.value', 'Obrigado!')
+
+    })
+
 })
