@@ -100,3 +100,16 @@ it('Strings', () => {
     expect(str, 'não contém números').to.match(/\D+/)
 
 })
+
+it('Numbers', () => {
+
+    const number = 4
+    const floatNumber = 5.2123
+
+    expect(number, 'checando igualdade').to.be.equal(4)
+    expect(number, 'checando se o numero é acima de: ').to.be.above(3)
+    expect(number, 'checando se o numero está abaixo: ').to.be.below(6)
+    expect(floatNumber, 'checando igualdade de float é próximo de: ').to.be.closeTo(5.2123)
+  
+
+})
