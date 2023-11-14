@@ -7,9 +7,7 @@ describe('Elementos básico', () => {
     })
 
     beforeEach(() => { // vai executar antes de cada teste. 
-
         cy.reload() // Carregar a pagina novamente
-
     })
 
     it('text', () => {
@@ -28,9 +26,13 @@ describe('Elementos básico', () => {
             .reload() // Carregar a pagina novamente
             .get('#resultado')
             .should('have.text', 'Status: Nao cadastrado')
-
-
     })
 
+    it.only('textField', () => {
 
+        cy.get('#formNome')
+            .type('cypress teste')
+            .should('have.value', 'cypress teste') // valida se no campo do texto foi escrito a parada. 
+
+    })
 })
