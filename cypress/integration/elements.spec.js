@@ -2,17 +2,19 @@
 
 describe('Elementos básico', () => {
 
-    it('text', () => {
+    before(() => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+
+    })
+
+    it('text', () => {
 
         cy.get('.facilAchar') //class element.
             .should('have.text', 'Cuidado onde clica, muitas armadilhas...')
     })
 
-    it.only('links', () => {
-
-        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+    it('links', () => {
 
         cy.get('[href="#"]')
             .click()
