@@ -2,7 +2,7 @@
 
 describe('Elementos básico', () => {
 
-    before(() => {
+    beforeEach(() => { //vai executar antes de cada teste. 
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
