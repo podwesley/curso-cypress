@@ -2,9 +2,13 @@
 
 describe('Elementos básico', () => {
 
-    beforeEach(() => { //vai executar antes de cada teste. 
-
+    before(() => { //Vai rodar uma vez antes de todos os testes. 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+    })
+
+    beforeEach(() => { // vai executar antes de cada teste. 
+
+        cy.reload() // Carregar a pagina novamente
 
     })
 
@@ -25,7 +29,7 @@ describe('Elementos básico', () => {
             .get('#resultado')
             .should('have.text', 'Status: Nao cadastrado')
 
-  
+
     })
 
 
