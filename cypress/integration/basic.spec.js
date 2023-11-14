@@ -6,8 +6,10 @@ describe('Básico de cypress', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
+        cy.pause()
+
         cy.title()
-            .should('be.equal', 'Campo de Treinamento').debug()
+            .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
         //imprimir o log no console, e escrever o log em um campo de texto. 
