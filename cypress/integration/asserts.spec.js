@@ -8,6 +8,8 @@ it('Equality', () => {
 
     expect(a).to.be.equal(1);
 
+    a.should('to.be.equal', 1); // uma outra forma de validar. 
+
     expect('a').not.to.be.equal('b');
 
     expect(a, 'Deveria ser 1').equal(2);
