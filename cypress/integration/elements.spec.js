@@ -58,7 +58,7 @@ describe('Elementos básico', () => {
 
     })
 
-    it.only('radio button ', () => {
+    it('radio button ', () => {
 
         cy.get('#formSexoFem')
             .click()
@@ -71,6 +71,21 @@ describe('Elementos básico', () => {
         cy.get("[name=formSexo]")
             .should('have.length', 2);
 
+
+    })
+
+    it('checkbox', () => {
+
+        cy.get('#formComidaPizza')
+            .click()
+            .should('be.checked') //verificar se um botao esta checado.
+
+        cy.get('[name=formComidaFavorita]')
+            .click({ multiple: true }) // mandando essa properties dentro do click ele clica em tudo. 
+            .get('#formComidaPizza')
+            .should('not.be.checked')
+            .get('#formComidaVegetariana')
+            .should('be.checked')
 
     })
 
