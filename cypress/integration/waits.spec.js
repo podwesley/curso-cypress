@@ -20,7 +20,7 @@ describe('Waits ...', () => {
 
     })
 
-    it.only('Retrys', () => {
+    it('Retrys', () => {
 
         cy.get('#buttonDelay')
             .click()
@@ -28,4 +28,30 @@ describe('Waits ...', () => {
             .should('exist')
 
     })
+
+    it('Esperas 2 e busca usando lists', () => {
+
+        cy.get('#buttonList')
+            .click()
+            .get('#lista li')
+            .find('span') // para encontrar um elemento dentro de outro elemento.
+            .should('contain', 'Item 1')
+            .get('#lista li')
+            .should('contain', 'Item 2')
+
+    })
+
+    it.only('button list DOM', () => {
+
+        cy.get('#buttonListDOM')
+            .click()
+            .get('#lista li')
+            .find('span') // para encontrar um elemento dentro de outro elemento.
+            .should('contain', 'Item 1')
+            .get('#lista li')
+            .should('contain', 'Item 2')
+
+    })
+
+
 })
