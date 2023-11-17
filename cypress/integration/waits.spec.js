@@ -62,13 +62,24 @@ describe('Waits ...', () => {
 
     })
 
-    it.only('Uso de timeout 2', () => { //pratica ruim
+    it('Uso de timeout 2', () => { // pratica ruim
 
         cy.get('#buttonListDOM')
             .click()
             .wait(5000)
             .get('#lista li span')
             .should('contain', 'Item 2')
+
+    })
+
+    it.only('Uso de timeout 3', () => {
+
+        cy.get('#buttonListDOM')
+            .click()
+            .get('#lista li span')
+            .should('have.length', 1)
+            .get('#lista li span')
+            .should('have.length', 2)
 
     })
 
