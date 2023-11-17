@@ -41,7 +41,7 @@ describe('Waits ...', () => {
 
     })
 
-    it.only('button list DOM', () => {
+    it('button list DOM', () => {
 
         cy.get('#buttonListDOM')
             .click()
@@ -50,6 +50,16 @@ describe('Waits ...', () => {
             .should('contain', 'Item 1')
             .get('#lista li')
             .should('contain', 'Item 2')
+
+    })
+
+
+    it.only('Uso de timeout', () => {
+
+        cy.get('#buttonDelay')
+            .click()
+            .get('#novoCampo')
+            .should('exist')
 
     })
 
