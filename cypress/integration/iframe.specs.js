@@ -2,19 +2,10 @@
 
 describe('iframe', () => {
 
-
-
-    before(() => { //Vai rodar uma vez antes de todos os testes. 
-        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
-    })
-
-    beforeEach(() => { // vai executar antes de cada teste. 
-        //  cy.reload() // Carregar a pagina novamente
-    })
-
     // iteração restrita
     it('iframe parte 1', () => {
 
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
         cy.get('#frame1').then(iframe => {
             const body = iframe.contents().find('body')
             cy.wrap(body)
@@ -26,9 +17,28 @@ describe('iframe', () => {
                 expect(msg).to.be.equal('Alert Simples')
             })
 
-            cy.get('#otherButton').click()
+            cy.wrap(body)
+                .find('#otherButton')
+                .click()
 
         })
+
+    })
+
+    // iteração restrita
+    it.only('iframe parte 2 - deve testar frame diretamente', () => {
+
+        cy.visit('https://www.wcaquino.me/cypress/frame.html')
+
+
+        cy.get('#otherButton')
+            .click()
+
+        cy.on('window:alert', msg => {
+            expect(msg).to.be.equal('Click OK!')
+        })
+
+
 
     })
 
