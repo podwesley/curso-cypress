@@ -53,12 +53,11 @@ describe('Waits ...', () => {
 
     })
 
-
     it.only('Uso de timeout', () => {
 
         cy.get('#buttonDelay')
             .click()
-            .get('#novoCampo')
+            .get('#novoCampo', { timeOut: 1000 })
             .should('exist')
 
     })
