@@ -10,7 +10,7 @@ describe('Helpers', () => {
         cy.reload()
     })
 
-    it('wrap', () => {
+    it('wrap', () => { // o wrap pega uma entidade qualquer e deixa ela gerenciavel pelo cypress
 
         const objeto = {
             nome: 'user', idade: 20
@@ -77,7 +77,7 @@ describe('Helpers', () => {
 
     })
 
-    it.only('its', () => { // o its pega uma propriedade do objeto
+    it('its', () => { // o its pega uma propriedade do objeto
 
 
         const objeto = {
@@ -87,16 +87,52 @@ describe('Helpers', () => {
         expect(objeto.nome).to.equal('user')
         expect(objeto).to.have.property('nome')
 
-        cy.wrap(objeto).should('have.property', 'nome', 'user')
+        cy.wrap(objeto)
+            .should('have.property', 'nome', 'user')
 
         // ex: 1 pegando somente uma propriedade do objeto. 
-        cy.wrap(objeto).its('nome').should('be.equal', 'user')
+        cy.wrap(objeto)
+            .its('nome')
+            .should('be.equal', 'user')
 
-        cy.wrap(objeto).its('endereco.rua').should('be.equal', 'cheia')
+        cy.wrap(objeto)
+            .its('endereco.rua')
+            .should('be.equal', 'cheia')
 
-        cy.wrap(objeto).its('endereco.rua').should('be.equal', 'cheia')
+        cy.wrap(objeto)
+            .its('endereco.rua')
+            .should('be.equal', 'cheia')
 
-        cy.title().its('length').should('be.equal', 20)
+        cy.title()
+            .its('length')
+            .should('be.equal', 20)
     })
+
+    it.only('invoke', () => { // invoca funcões js
+
+        const getValue = () => 1;
+
+        cy.wrap({ funcao: getValue })
+            .invoke('funcao')
+            .should('be.equal', 1)
+
+
+        const soma = (a, b) => a + b
+
+        cy.wrap({ funcao: soma })
+            .invoke('funcao', 1 , 5)
+            .should('be.equal', 6)
+
+      
+      cy.get('#formNome').invoke('val', 'Texto via invoke') // escrevendo texto no input
+      
+      cy.window().invoke('alert', 'mensagem alerta')  // executando script na tela
+
+      cy.get('#resultado').invoke('html', '<input type="button" value="botao inserido">') //inserir um html dentro da div
+
+
+    })
+
+
 
 })
