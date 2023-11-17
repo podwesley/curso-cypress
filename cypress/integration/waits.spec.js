@@ -72,7 +72,7 @@ describe('Waits ...', () => {
 
     })
 
-    it.only('Uso de timeout 3', () => {
+    it('Uso de timeout 3', () => {
 
         cy.get('#buttonListDOM')
             .click()
@@ -80,6 +80,15 @@ describe('Waits ...', () => {
             .should('have.length', 1)
             .get('#lista li span')
             .should('have.length', 2)
+
+    })
+
+    it.only('Clique retry', () => {
+
+        cy.get('#buttonCount')
+            .click()
+            .click()
+            .should('have.value', '111')
 
     })
 
