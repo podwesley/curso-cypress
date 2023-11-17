@@ -128,7 +128,7 @@ describe('Elementos básico', () => {
 
         cy.get('[data-testid=dataEsportes]')
             .invoke('val')
-            .should('equal', ['natacao', 'Corrida', 'nada'])
+            .should('eql', ['natacao', 'Corrida', 'nada'])
 
 
     })
