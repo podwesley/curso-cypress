@@ -68,5 +68,19 @@ describe('Alerts', () => {
 
     })
 
+    it('promp', () => {
 
+        cy.window().then(win => {
+            cy.stub(win, 'prompt').returns('42')
+
+        })
+
+        cy.on('window:alert', mensagem => {
+            expect(mensagem).to.be.equal(':D')
+        })
+
+        cy.get('#prompt')
+            .click()
+
+    })
 })
