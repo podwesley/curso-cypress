@@ -2,7 +2,7 @@
 
 describe('Básico de cypress', () => {
 
-    it.only('visitar uma nova pagina e fazer uma validação do título ', () => {
+    it('visitar uma nova pagina e fazer uma validação do título ', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 

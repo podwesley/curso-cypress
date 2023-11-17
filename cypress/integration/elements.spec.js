@@ -89,7 +89,7 @@ describe('Elementos básico', () => {
 
     })
 
-    it('combos', () => {
+    it.only('combos', () => {
 
         // selecionando por texto
         cy.get('[data-test=dataEscolaridade]')
@@ -101,7 +101,36 @@ describe('Elementos básico', () => {
             .select('1graucomp')
             .should('have.value', '1graucomp')
 
-        //TODO - validar opções do combo. 
+        // conta todos os elementos e pega todos os valores e valida alguns
+        cy.get('[data-test=dataEscolaridade] option')
+            .should('have.length', 8) // contando a quantidade de elementos
+
+        cy.get('[data-test=dataEscolaridade] option')
+            .then($arr => {
+                const values = []
+
+                $arr.each(function () {
+                    values.push(this.innerHTML)
+                })
+
+                expect(values).to.include.members(['Superior', 'Mestrado'])
+            })
+
+
+        //validar opções selecionadas no combo multiplo
+        cy.get('[data-testid=dataEsportes]')
+            .select(['natacao', 'Corrida', 'nada'])
+            .get('[data-testid=dataEsportes]')
+            .then($el => {
+                expect($el.val()).to.be.deep.equal(['natacao', 'Corrida', 'nada'])
+                expect($el.val()).to.have.length(3)
+            })
+
+        cy.get('[data-testid=dataEsportes]')
+            .invoke('val')
+            .should('equal', ['natacao', 'Corrida', 'nada'])
+
+
     })
 
     it('combos multiplos', () => {
@@ -110,7 +139,7 @@ describe('Elementos básico', () => {
         // de combo multiplo quando mandamos um array temos que mandar os values e não os textos
         cy.get('[data-testid=dataEsportes]')
             .select(['natacao', 'futebol'])
-            
+
         //TODO - validar opções selecionadas do combo multiplo.  
     })
 
