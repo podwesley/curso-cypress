@@ -22,7 +22,7 @@ describe('Alerts', () => {
     })
 
 
-    it.only('Alert com stub/mock', () => {
+    it('Alert com stub/mock', () => {
 
         const mock = cy.stub().as('alerta')// o as é um alias chamado alerta
 
@@ -30,6 +30,40 @@ describe('Alerts', () => {
         cy.get('#alert')
             .click().then(() => {
                 expect(mock.getCall(0)).to.be.calledWith('Alert Simples')
+            })
+
+    })
+
+
+    it('Confirm', () => {
+
+
+        cy.get('#confirm')
+            .click()
+
+        cy.on('window:confirm', mensagem => {
+            expect(mensagem).to.be.equal('Confirm Simples')
+        })
+
+        cy.on('window:alert', mensagem => {
+            expect(mensagem).to.be.equal('Confirmado')
+        })
+
+    })
+
+    it('Deny', () => {
+
+
+        cy.get('#confirm')
+            .click()
+
+        cy.on('window:confirm', mensagem => {
+            expect(mensagem).to.be.equal('Confirm Simples')
+            return false
+        })
+
+        cy.on('window:alert', mensagem => {
+            expect(mensagem).to.be.equal('Negado')
         })
 
     })
