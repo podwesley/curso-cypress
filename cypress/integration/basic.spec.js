@@ -2,7 +2,7 @@
 
 describe('Básico de cypress', () => {
 
-    it('visitar uma nova pagina e fazer uma validação do título', () => {
+    it.only('visitar uma nova pagina e fazer uma validação do título ', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
@@ -10,7 +10,18 @@ describe('Básico de cypress', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
-        //TODO - imprimir o log no console, e escrever o log em um campo de texto. 
+        //cy.title().debug()
+
+        // promissse
+        cy.title().then(title => {
+            console.log(title)
+        })
+
+        // promissse
+        cy.title().should(title => {
+            console.log(title)
+        })
+
 
     })
 

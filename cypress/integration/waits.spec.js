@@ -83,7 +83,7 @@ describe('Waits ...', () => {
 
     })
 
-    it.only('Clique retry', () => {
+    it('Clique retry', () => {
 
         cy.get('#buttonCount')
             .click()
