@@ -72,8 +72,31 @@ describe('Helpers', () => {
         // a validação será comparada com 2
         cy.wrap(1).then(numero => { return 2 }).should('be.equal', 2)
 
-         // vai dar erro pois o should ignora o retorno. 
-         cy.wrap(1).should(numero => { return 2 }).should('be.equal', 2)
+        // vai dar erro pois o should ignora o retorno. 
+        cy.wrap(1).should(numero => { return 2 }).should('be.equal', 2)
 
     })
+
+    it.only('its', () => { // o its pega uma propriedade do objeto
+
+
+        const objeto = {
+            nome: 'user', idade: 20, endereco: { rua: 'cheia' }
+        }
+
+        expect(objeto.nome).to.equal('user')
+        expect(objeto).to.have.property('nome')
+
+        cy.wrap(objeto).should('have.property', 'nome', 'user')
+
+        // ex: 1 pegando somente uma propriedade do objeto. 
+        cy.wrap(objeto).its('nome').should('be.equal', 'user')
+
+        cy.wrap(objeto).its('endereco.rua').should('be.equal', 'cheia')
+
+        cy.wrap(objeto).its('endereco.rua').should('be.equal', 'cheia')
+
+        cy.title().its('length').should('be.equal', 20)
+    })
+
 })
